@@ -1,20 +1,41 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Love Letter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sophia</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="background" id="background"></div>
-    <div class="container">
-        <h1>Love Letter 💖</h1>
-        <p class="letter" id="loveLetter"></p>
-        <button id="revealBtn">Read Letter</button>
+    <audio id="bgMusic" src="imports/Sancturary.mp3" autoplay loop></audio>
+
+    <div class="hero">
+        <img src="imports/sophia.jpeg" alt="Sophia" class="profile-pic">
+        <h1 id="greeting">Hi, Sophia!</h1>
+        <button id="clickButton">Click me!</button>
+        <div id="letter" class="letter hidden">
+            <p>
+                I made this small space on the internet just for you. Every time I see your pictures,
+                I can't help but admire how stunning you are—everything about you naturally lights up the room.
+                I don’t just find you beautiful… I find myself wanting to know you more, spend time with you,
+                and hopefully, have the chance to call you mine one day.
+            </p>
+            <p>
+                So, I wanted to ask something that’s been on my mind for a while.
+            </p>
+            <p style="text-align:center; font-weight:bold;">Would you go on a date with me?</p>
+            <div style="margin-top:20px; text-align:center;">
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+            </div>
+        </div>
     </div>
 
-    <audio id="bgMusic" src="assets/audio/Joji - Sanctuary _ Lyrics.mp3" loop></audio>
-
     <script src="js/script.js"></script>
+    <script src="js/floating-hearts.js"></script>
+    <script>
+        document.getElementById('bgMusic').volume = 0.3;
+    </script>
 </body>
 </html>

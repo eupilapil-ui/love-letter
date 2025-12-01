@@ -1,69 +1,40 @@
-document.getElementById('revealBtn').addEventListener('click', function() {
-    const bgMusic = document.getElementById('bgMusic');
-    bgMusic.play();
+const clickButton = document.getElementById('clickButton');
+const letter = document.getElementById('letter');
+const yesButton = document.getElementById('yesButton');
+const noButton = document.getElementById('noButton');
+const bgMusic = document.getElementById('bgMusic'); 
 
-    const letter = `
-Dear, Sweet,
+for (let i = 0; i < 25; i++) {
+    let heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '-50px';
+    heart.style.animationDelay = Math.random() * 5 + 's';
+    heart.style.transform = `scale(${Math.random() * 1.2 + 0.6})`;
+    document.body.appendChild(heart);
+}
 
-Even after everything I’ve been through, 
-you’re still the one I think of,
-the brightest star in my sky,
-the sweetest melody in my heart.
-I realize how much I truly miss you.
-
-Sweet, you are like the moon to me;
-you shine brighter than anyone else
-when my space feels dark.
-Your smile is like a thousand exploding suns,
-lighting up even the loneliest moments.
-
-I wish I could be near you again,
-to hear your laughter and feel your presence.
-These past months apart have made me long for you even more,
-and my heart quietly hopes that we can be together soon.
-
-I hope this letter finds you smiling,
-because you light up my world in the most beautiful way.
-Even from afar, my thoughts and feelings are with you,
-and I can’t wait for the day we’re together again.
-
-With all my love and longing,
-[Someone]
-`;
-
-    const display = document.getElementById('loveLetter');
-    display.textContent = '';
-    display.classList.add('show');
-    this.style.display = 'none';
-    let index = 0;
-    const speed = 50;
-
-    function typeLetter() {
-        if (index < letter.length) {
-            display.textContent += letter.charAt(index);
-            index++;
-            setTimeout(typeLetter, speed);
-        }
-    }
-
-    typeLetter();
-    spawnEmojis();
+clickButton.addEventListener('click', () => {
+    bgMusic.play(); 
+    letter.classList.remove('hidden');
+    setTimeout(() => {
+        letter.classList.add('show');
+    }, 10);
+    clickButton.style.display = 'none';
 });
 
-function spawnEmojis() {
-    const emojis = ['💖', '😔', '😢', '💔', '😞'];
-    const bg = document.getElementById('background');
-    setInterval(() => {
-        const emoji = document.createElement('div');
-        emoji.classList.add('emoji');
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.fontSize = (Math.random() * 30 + 20) + 'px';
-        emoji.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        bg.appendChild(emoji);
+yesButton.addEventListener('click', () => {
+    letter.classList.remove('show');
+    setTimeout(() => {
+        letter.innerHTML = '<p style="text-align:center; font-size:1.5rem;">Yay! This Saturday haa! I can\'t wait to see you!! 💖</p>';
+        letter.classList.add('show');
+    }, 500);
+});
 
-        setTimeout(() => {
-            emoji.remove();
-        }, 10000);
-    }, 300);
-}
+noButton.addEventListener('click', () => {
+    letter.classList.remove('show'); 
+    setTimeout(() => {
+        letter.innerHTML = '<p style="text-align:center; font-size:1.5rem;">Oh, that\'s okay. Next Time siguro!. 😊</p>';
+        letter.classList.add('show');
+    }, 500);
+});
